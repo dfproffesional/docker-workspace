@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  php74:
+    container_name: php74_webdevops-centos7
+    image: webdevops-php74:centos7
+    build: 
+      context: .
+      dockerfile: PHP7.Dockerfile
+    volumes:
+      - php74_files:/app
+    restart: always
+
+  php81:
+    container_name: php81_webdevops-centos7
+    image: webdevops/php-apache:8.1-alpine
+    volumes:
+      - php81_files:/app
+    restart: always
+
+volumes:
+  php74_files:
+    driver: local
+  php81_files:
+    driver: local
