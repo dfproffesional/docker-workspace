@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  db_mysql5_7_42:
+    container_name: mysql5_7_42
+    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:5.7.42-debian
+    environment:
+      MYSQL_DATABASE: default
+      MYSQL_ROOT_PASSWORD: pass
+    volumes:
+      - mysql5_7_42_files:/var/lib/mysql
+
+volumes:
+  mysql5_7_42_files:
+    driver: local
