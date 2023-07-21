@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  php74:
+    container_name: php74_webdevops-centos7
+    image: webdevops-php74:centos7
+    build: 
+      context: ..
+      dockerfile: webdevops_http_php/Dockerfiles/CENTOS7-PHP74.Dockerfile
+    volumes:
+      - php74_files:/app
+      - $HOME/.ssh:/home/application/.ssh
+      - $HOME/.gitconfig:/home/application/.gitconfig
+    restart: always
+    ports:
+      - "127.0.2.1:80:81"
+
+  php81:
+    container_name: php81_webdevops-alpine
+    image: webdevops-php81:alpine-ohmyposh.1.0
+    build: 
+      context: ..
+      dockerfile: webdevops_http_php/Dockerfiles/ALPINE-PHP81.Dockerfile
+    volumes:
+      - php81_files:/app
+      - $HOME/.ssh:/home/application/.ssh
+      - $HOME/.gitconfig:/home/application/.gitconfig
+    restart: always
+    ports:
+      - "127.0.2.2:80:81"
+
+volumes:
+  php74_files:
+    driver: local
+  php81_files:
+    driver: local

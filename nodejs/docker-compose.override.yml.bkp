@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  node16:
+    volumes:
+      - ${PATH_PROJECTS}/aw-avex-web/vue:/app
+      - ${PATH_PROJECTS}/aw-avex-web/app/webroot/_vue_builds:/static/_vue_builds
+    ports:
+      - "127.0.2.5:4200:7070"
