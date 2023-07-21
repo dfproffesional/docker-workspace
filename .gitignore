@@ -1,5 +1,6 @@
 # Personal
 dev/
+local/
 
 # Env
 .env

@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  v_16:
+    container_name: node16_bullseye
+    image: node16_bullseye:1.0
+    build: 
+      context: ..
+      dockerfile: nodejs/Dockerfiles/NODE16.Dockerfile
+    volumes:
+      - node16_files:/static
+      - $HOME/.ssh:/home/node/.ssh
+      - $HOME/.gitconfig:/home/node/.gitconfig
+    tty: true
+
+  v_14:
+    container_name: nodejs_14-bullseye
+    image: node14_bullseye:1.0
+    build: 
+      context: ..
+      dockerfile: nodejs/Dockerfiles/NODE14.Dockerfile
+    volumes:
+      - node14_files:/static
+      - $HOME/.ssh:/home/node/.ssh
+      - $HOME/.gitconfig:/home/node/.gitconfig
+    tty: true
+
+volumes:
+  node16_files:
+    driver: local
+  node14_files:
+    driver: local
